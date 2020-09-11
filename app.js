@@ -106,8 +106,6 @@ function setKittenMood(kitten) {
 
 function getStarted() {
   document.getElementById("welcome").remove()
-  loadKittens()
-  drawKittens()
 }
 
 function generateId() {
@@ -121,3 +119,6 @@ function generateMood() {
     Math.floor(Math.random() * 10) + ""
   );
 }
+
+loadKittens()
+drawKittens()
