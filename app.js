@@ -106,7 +106,6 @@ function setKittenMood(kitten) {
 
 function getStarted() {
   document.getElementById("welcome").remove()
-  saveKittens()
   loadKittens()
   drawKittens()
 }
