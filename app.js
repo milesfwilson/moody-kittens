@@ -106,7 +106,6 @@ function setKittenMood(kitten) {
 
 function getStarted() {
   document.getElementById("welcome").remove()
-  saveKittens()
   loadKittens()
   drawKittens()
 }
@@ -123,6 +122,7 @@ function generateMood() {
   );
 }
 
+<<<<<<< HEAD
 function pageReload() {
   if (window.localStorage.getItem('kittens') != null) {
     document.getElementById("welcome").remove()
@@ -135,3 +135,5 @@ function pageReload() {
 }
 
 pageReload()
+=======
+>>>>>>> d87a7de65897b3a57bf796b6cb03fed33e0a56b4
