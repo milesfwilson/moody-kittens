@@ -122,3 +122,16 @@ function generateMood() {
     Math.floor(Math.random() * 10) + ""
   );
 }
+
+function pageReload() {
+  if (window.localStorage.getItem('kittens') != null) {
+    document.getElementById("welcome").remove()
+    loadKittens()
+    drawKittens()
+  } else {
+    saveKittens()
+    loadKittens()
+  }
+}
+
+pageReload()
