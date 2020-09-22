@@ -4,18 +4,37 @@ let kittens = [];
 function addKitten(event) {
   event.preventDefault()
   let form = event.target
+  let newName = form.name.value.toUpperCase()
 
   let kitten = {
     id: generateId(),
-    name: form.name.value,
+    name: newName,
     mood: "tolerant",
     affection: 5
   }
 
-  kittens.push(kitten)
+  if (kittens.length > 0) {
+    if (kittens.filter(kitten => kitten.name === newName).length > 0) {
+      alert('This kitten already exists!')
+      form.reset()
+
+    } else {
+      kittens.push(kitten)
+      saveDraw()
+      form.reset()
+    }
+
+  } else if (kittens.length <= 0) {
+
+    kittens.push(kitten)
+    saveDraw()
+    form.reset()
+
+  }
+}
+
+function saveDraw() {
   saveKittens()
-  loadKittens()
-  form.reset()
   drawKittens()
 }
 
@@ -59,8 +78,7 @@ function removeKitten(kittenId) {
   for (let i = 0; i < kittens.length; i++) {
     if (kittens[i]['id'] == kittenId) {
       kittens.splice(i, 1)
-      saveKittens()
-      drawKittens()
+      saveDraw()
     }
   }
 }
@@ -84,8 +102,7 @@ function catnip(kittenId) {
       let kitten = kittens[i]
       kitten['affection'] = 5
       kitten['mood'] = "tolerant"
-      saveKittens()
-      drawKittens()
+      saveDraw()
     }
   }
 }
@@ -100,8 +117,7 @@ function setKittenMood(kitten) {
   } else if (kitten['affection'] <= 0) {
     kitten['mood'] = "gone"
   }
-  saveKittens()
-  drawKittens()
+  saveDraw()
 }
 
 function getStarted() {
